@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: bikestore-async
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin123
+    connection-timeout: 10000
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.bikestore: DEBUG
