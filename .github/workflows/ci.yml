@@ -10,7 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # RabbitMQ disponible en localhost:5672 durante el pipeline
     services:
       rabbitmq:
         image: rabbitmq:3.12-management-alpine
@@ -42,6 +41,9 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
+      - name: Dar permisos a Maven Wrapper
+        run: chmod +x mvnw
 
       - name: Build y Tests
         run: ./mvnw clean verify
